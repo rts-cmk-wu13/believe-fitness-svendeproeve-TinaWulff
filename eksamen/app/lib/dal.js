@@ -1,14 +1,14 @@
 // DAL - Data Access Layer
 
-export async function getClasses() {
-    const response = await fetch("http://localhost:4000/api/v1/activities", { next: { revalidate: 60*60*24 } });
+export async function getWorkoutClasses() {
+    const response = await fetch("http://localhost:4000/api/v1/classes", { next: { revalidate: 60*60*24 } });
     const data = await response.json();
 
     console.log(data);
     return data;
 }
 
-export async function getActivityDetails(id) {
+export async function getWorkoutDetails(id) {
     try {
         if (!id) {
             throw new Error({ message: "Missing ID parameter" });
@@ -17,7 +17,7 @@ export async function getActivityDetails(id) {
             throw new Error({ message: "Incorrect ID format"})
         }
 
-        const res = await fetch(`http://localhost:4000/api/v1/activities/${id}`);
+        const res = await fetch(`http://localhost:4000/api/v1/classes/${id}`);
         if (!res.ok) {
             throw new Error("Failed to fetch the blog post");
         }

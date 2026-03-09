@@ -9,8 +9,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Landrup Dans App",
-  description: "Landrup danseskole app, her kan du se hvilke hold der udbydes og tilmelde dig.",
+  title: "Belive Fitness App",
+  description: "Fitness app where you can see the available classes and search for them",
 };
 
 export default function RootLayout({ children }) {
