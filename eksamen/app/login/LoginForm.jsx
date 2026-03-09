@@ -33,31 +33,31 @@ export default function LoginForm() {
     return (
         <form action={formAction} 
         className="mx-7 flex flex-col gap-6">
-            <h1 className="text-4xl my-4">Log ind</h1>
+            <h1 className="text-lg mt-10 font-semibold">Log in with your credentials</h1>
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                  type="text"
                  name="username"
                  defaultValue={state.values.username}
-                 placeholder="Brugernavn"/>
+                 placeholder="Enter your email..."/>
                 {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
                 {state.errors?.username && <p>{state.errors.username}</p>}
             </div>
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-[#9E9E9E] p-2 text-lg"
                 type="password"
                 name="password"
                 defaultValue={state.values.password}
-                placeholder="Adgangskode"/>
+                placeholder="Enter your password..."/>
                 {state.errors?.password && <p>{state.errors.password}</p>}
             </div>
-            <div className="mx-10 flex justify-center">
+            <div className="flex justify-center">
                 { state.errors?.form && <p>{state.errors.form}</p> }
-                <button className="text-[#003147] bg-[#E9E9E9] p-3 w-full max-w-[300px] rounded-lg text-lg"
+                <button className="text-[#003147] bg-[#F1C40E] p-3 w-full rounded-full text-sm font-bold"
                 type="submit"
-                disabled={isPending}>{ isPending ? "Logger ind..." : "Log ind" }</button>
+                disabled={isPending}>{ isPending ? "Loggin in..." : "LOG IN" }</button>
             </div>
-            <p className="self-center text-xl">Er du endnu ikke bruger? <a className="underline" href="/opret-bruger">Opret dig her.</a></p>
+            <p className="self-center text-s text-center text-[#9E9E9E]">Are You not yet a Believer?<br/><a className="underline" href="/opret-bruger">Sign up here</a> to start training like a pro.</p>
         </form>
     )
 }

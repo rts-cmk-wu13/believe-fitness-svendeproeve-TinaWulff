@@ -60,5 +60,5 @@ export async function loginUser(prevState, formData) { // når vi laver en actio
     cookieStore.set("username", data.name);
     cookieStore.set("userId", String(data.userId));
 
-    return redirect("/profil")// når login er succesfuldt, så redirecter vi brugeren til profil-siden.
+    return redirect("/profile")// når login er succesfuldt, så redirecter vi brugeren til profil-siden.
 }
