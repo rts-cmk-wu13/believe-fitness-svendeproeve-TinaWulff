@@ -1,6 +1,7 @@
 //Detaljeside for holdet som hentes ud fra dets id
 import { cookies } from 'next/headers';
 import { getWorkoutDetails } from '../../lib/dal';
+import { getTrainer } from '../../lib/dal';
 import { getUserDetails } from '../../lib/dal';
 import { notFound } from 'next/navigation';
 import { GoStarFill } from "react-icons/go";
@@ -14,6 +15,8 @@ export default async function ActivityDetailPage({ params }) {
     const { id } = await params;
     const workoutId = Number(id);
     const workout = await getWorkoutDetails(workoutId)
+    const trainerId = workout.trainerId
+    const trainer = await getTrainer(trainerId)
 
     console.log(workout)
 
@@ -64,7 +67,7 @@ export default async function ActivityDetailPage({ params }) {
                     <article className='my-4 px-6'>
                         <h2 className='text-2xl font-[600] mb-2'>Trainer</h2>
                         <div className='flex gap-4 items-center'>
-                            <Image width={697} height={646} src={workout.asset.url} alt={workout.className} unoptimized
+                            <Image width={697} height={646} src={trainer.asset.url} alt={workout.className} unoptimized
                             className='rounded-xl w-30 h-30 object-cover'/>
                             <p className='font-bold'>{workout.trainer.trainerName}</p>
                         </div>

@@ -39,7 +39,7 @@ export default function LoginForm() {
                  type="text"
                  name="username"
                  defaultValue={state.values.username}
-                 placeholder="Enter your email..."/>
+                 placeholder="Enter your username..."/>
                 {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
                 {state.errors?.username && <p>{state.errors.username}</p>}
             </div>
@@ -57,7 +57,7 @@ export default function LoginForm() {
                 type="submit"
                 disabled={isPending}>{ isPending ? "Loggin in..." : "LOG IN" }</button>
             </div>
-            <p className="self-center text-s text-center text-[#9E9E9E]">Are You not yet a Believer?<br/><a className="underline" href="/opret-bruger">Sign up here</a> to start training like a pro.</p>
+            <p className="self-center text-s text-center text-[#9E9E9E]">Are You not yet a Believer?<br/><a className="underline" href="/create-user">Sign up here</a> to start training like a pro.</p>
         </form>
     )
 }

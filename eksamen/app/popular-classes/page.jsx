@@ -1,5 +1,3 @@
-//hent ind lisetevisning med aktiviteter/hold med fetch og ved klik på aktiviteten gå til detaljesiden/den aktivitets id -> /aktiviteter/[id]
-//import Menu from '../components/Menu';
 
 import { getWorkoutClasses } from '../lib/dal';
 import Link from 'next/link';
@@ -7,6 +5,10 @@ import WorkoutCard from '../components/WorkoutCard';
 
 export default async function PopularWorkoutClassesPage() {
   const workoutClasses = await getWorkoutClasses();
+  // https://stackoverflow.com/questions/3419928/how-can-i-return-a-random-value-from-an-array
+  const randomIndex = Math.floor(Math.random() * workoutClasses.length);
+  const randomWorkoutClass = workoutClasses[randomIndex];
+
 
   if (workoutClasses.succes === false) {
     return (
@@ -24,16 +26,18 @@ export default async function PopularWorkoutClassesPage() {
         <p>her skal være en burgermenu</p>
       </header>
         <main className='pb-14'>
-            <h1>Popular Classes</h1>
-            <section>
-                <p>section der henter 1 tilfældig workout-klasse ud og vises. Lav komponent til den, eller måske kan workoutCard også bruges her? workoutcar.random something</p>
+            <h1 className='text-[1.5em] px-6 mt-6'>Popular Classes</h1>
+            <section className='px-6'>
+                <WorkoutCard  classNameImage='rounded-tr-4xl rounded-tl-4xl rounded-bl-4xl' classNameYDiv='px-6 rounded-tr-4xl rounded-bl-4xl gap-2' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
             </section>
 
-            <section >
-                <h1 className='mx-8 my-4 text-3xl'>Classes for You</h1>
-                { workoutClasses.map(workout => (
-                <WorkoutCard workout={workout} key={workout.id}/>
-                ))}
+            <section className='pl-6'>
+                <h1 className='mt-8 text-[1em] font-bold'>Classes for You</h1>
+                <section  className='flex overflow-x-auto gap-2'>
+                    { workoutClasses.map(workout => (
+                    <WorkoutCard classNameLink='min-w-[150px]' classNameImage='rounded-tr-2xl rounded-tl-2xl rounded-bl-2xl' classNameYDiv='text-[10px] h-[30%] px-2 rounded-tr-2xl rounded-bl-2xl gap-0' workout={workout} key={workout.id} />
+                    ))}
+                </section>
             </section>
         </main>
     </>

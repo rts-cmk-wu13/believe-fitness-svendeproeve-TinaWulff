@@ -23,64 +23,52 @@ const initialState = {
     return (
         <form action={formAction} 
         className="mx-7 flex flex-col gap-6 mb-10 pb-10">
-            <h1 className="text-4xl my-4">Opret bruger</h1>
-
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                  type="text"
                  name="firstname"
                  defaultValue={state.values.firstname}
-                 placeholder="Fornavn"/>
+                 placeholder="Enter your first name..."/>
                 {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
                 {state.errors?.firstname && <p>{state.errors.firstname}</p>}
             </div>
 
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                  type="text"
                  name="lastname"
                  defaultValue={state.values.lastname}
-                 placeholder="Efternavn"/>
+                 placeholder="Enter your last name..."/>
                 {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
                 {state.errors?.lastname && <p>{state.errors.lastname}</p>}
             </div>
 
 
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                  type="text"
                  name="username"
                  defaultValue={state.values.username}
-                 placeholder="Brugernavn"/>
+                 placeholder="Enter your username..."/>
                 {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
                 {state.errors?.username && <p>{state.errors.username}</p>}
             </div>
 
             <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
-                 type="text"
-                 name="age"
-                 defaultValue={state.values.age}
-                 placeholder="Alder"/>
-                {/* defaultvalue indsættes ud fra state, her er state enten inistialState eller den opdaterede state, med brugerens input values, optional chaining er derfor ikke nødvendig her, fordi vi har defineret en inistialState. */}
-                {state.errors?.age && <p>{state.errors.age}</p>}
-            </div>
-
-            <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                 type="password"
                 name="password"
                 defaultValue={state.values.password}
-                placeholder="Adgangskode"/>
+                placeholder="Enter your password..."/>
                 {state.errors?.password && <p>{state.errors.password}</p>}
             </div>
 
                <div>
-                <input className="bg-[#E9E9E9] w-full text-[#003147] p-3 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                 type="password"
                 name="confirmPassword"
                 defaultValue={state.values.confirmPassword}
-                placeholder="Gentag Adgangskode"/>
+                placeholder="Repeat your password..."/>
                 {state.errors?.confirmPassword && <p>{state.errors.confirmPassword}</p>}
             </div>
 
@@ -88,12 +76,12 @@ const initialState = {
                 { state.errors?.form && <p>{state.errors.form}</p> }
                 
                 {state.success && 
-                <div className="w-full h-full bg-[#003147]/70 fixed top-0 left-0 z-50 flex items-center justify-center"> 
-                <div className="text-green-600 mb-10 bg-gray-200 p-20 rounded-lg absolute top-[40%] z-1000 flex flex-col items-center shadow-4xl border-4 border-green-600">
+                <div className="w-full h-full bg-yellow-600/50 fixed top-0 left-0 z-50 flex items-center justify-center"> 
+                <div className="text-black text-center mx-4 font-bold mb-10 bg-gray-200 p-25 rounded-3xl absolute top-[25%] z-1000 flex flex-col items-center shadow-4xl border-4 border-yellow-200">
 
                         <p className="mb-4">{state.success}</p>
 
-                        <Link href="/login" className="bg-[#003147] text-white py-3 px-6 rounded mt-4">
+                        <Link href="/login" className="bg-[#F1C40E] text-black font-bold uppercase text-sm py-3 px-6 rounded-full mt-4">
                             Log ind
                         </Link>
                     
@@ -101,9 +89,9 @@ const initialState = {
                 </div>
                 }
 
-                <button className="text-[#003147] bg-[#E9E9E9] p-3 w-full max-w-[300px] rounded-lg text-lg"
+                <button className="text-[#003147] bg-[#F1C40E] p-3 w-full rounded-full text-sm font-bold uppercase"
                 type="submit"
-                disabled={isPending}>{ isPending ? "Opretter bruger..." : "Opret bruger" }</button>
+                disabled={isPending}>{ isPending ? "adding user..." : "sign up" }</button>
             </div>
             
     

@@ -3,12 +3,11 @@
 import { z }from "zod";
 
 const createUserSchema = z.object({
-  firstname: z.string("Indtast dit fornavn"),
-  lastname: z.string("Indtast dit efternavn"),
-  username: z.string("Indtast et brugernavn"),
-  age: z.string("Indtast din alder"),
-  password: z.string().min(4, "Adgangskode skal være mindst 4 tegn"),
-  confirmPassword: z.string().min(4, "Adgangskode skal være mindst 4 tegn"),
+  firstname: z.string().min(2, "Enter your first name"),
+  lastname: z.string().min(2, "Enter your last name"),
+  username: z.string().min(4, "Enter a username with at least 4 characters"),
+  password: z.string().min(4, "Password must be at least 4 characters"),
+  confirmPassword: z.string().min(4, "Password must be at least 4 characters"),
 });
 
 export async function CreateUser(prevState, formData) { // når vi laver en action og kobler den med et actionstate skal to argumenter med: forrige state (prevState) og formData (formdataen fra formularen)
@@ -19,7 +18,6 @@ const values = {
   confirmPassword: formData.get('confirmPassword') || '',
   firstname: formData.get('firstname') || '',
   lastname: formData.get('lastname') || '',
-  age: formData.get('age') || '',
   role: 'default'
 };
 
@@ -28,15 +26,15 @@ const values = {
 if (values.password !== values.confirmPassword) {
   return {
     values,
-    errors: { confirmPassword: ["Adgangskoderne skal være ens"] },
+    errors: { confirmPassword: ["Passwords must match"] },
     success: false
   };
 }
 
     console.log(values);
 
-      // Valider med Zod
-  const result = createUserSchema.safeParse(values);
+    // Valider med Zod
+    const result = createUserSchema.safeParse(values);
 
    
     if (!result.success) {
@@ -49,19 +47,13 @@ if (values.password !== values.confirmPassword) {
     // z.flattenError er en zod-funktion, der "flader" fejlene ud, så de er nemmere at arbejde med i vores form. Det gør det nemmere at vise de rigtige fejlmeddelelser ved siden af de rigtige inputfelter i formularen.
     // fieldErrors er en del af det objekt, som z.flattenError returnerer, det er her z.objektets fejlbesker ligger og vi her med .fieldErrors får adgang til dem, så vi kan sende dem tilbage til vores form og vise dem for brugeren.
 
-    const params = new URLSearchParams();
-    params.append('username', values.username);
-    params.append('password', values.password);
-    params.append('firstname', values.firstname);
-    params.append('lastname', values.lastname);
-    params.append('age', values.age);
-    params.append('role', values.role);
-
     const response = await fetch("http://localhost:4000/api/v1/users", {
     method: "POST",
-    body: params.toString(),
-    headers: { "Content-Type": "application/x-www-form-urlencoded" }
+    body: JSON.stringify(values),
+    headers: { "Content-Type": "application/json" }
     });
+
+    //console.log(await response.json())
 
     if (!response.ok) {
     // hvis det ikke er ok, altså hvis der er en fejl, så returnerer vi den her state, som indeholder de værdier brugeren indtastede (så de ikke skal indtaste det hele igen) og en form-fejl.
@@ -80,7 +72,6 @@ if (values.password !== values.confirmPassword) {
         confirmPassword: '',
         firstname: '',
         lastname: '',
-        age: ''
     },
         errors: undefined,
         success: "Bruger oprettet, du kan nu logge ind!"

@@ -90,6 +90,45 @@ export async function getUserDetails(id) {
 
 
 
+export async function getTrainer(id) {
+
+    try {
+        if (!id) {
+            throw new Error({ message: "Missing ID parameter" });
+        }
+        if (!/^\d+$/.test(id)) {
+            throw new Error({ message: "Incorrect ID format"})
+        }
+
+        const res = await fetch(`http://localhost:4000/api/v1/trainers/${id}`);
+        if (!res.ok) {
+            throw new Error("Failed to fetch the blog post");
+        }
+
+        // if (res.status === 404) {
+        //     return notFound();
+        // }
+    
+        if (res.status !== 200) {
+            throw new Error({ message: res.statusText });
+        }
+
+        if (res.headers.get('content-type')?.includes('application/json')) {
+            return await res.json();
+        } else {
+            throw new Error("Unexpected content type");
+        }
+
+    } catch (error) {
+        console.log("getTrainer Error", error);
+        
+        return {
+            succes: false,
+            message: "something went wrong on the server, try again later"
+        }
+    }
+}
+
 
 
 // Bruges ikke:
