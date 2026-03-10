@@ -5,6 +5,7 @@ import { getTrainer } from '../../lib/dal';
 import { getUserDetails } from '../../lib/dal';
 import { notFound } from 'next/navigation';
 import { GoStarFill } from "react-icons/go";
+import AddClassButton from '../../components/signUpBtn/AddClassButton';
 import Image from 'next/image';
 //import AddActivityButton from '../AddActivityButton';
 import Link from 'next/link';
@@ -39,7 +40,7 @@ export default async function ActivityDetailPage({ params }) {
     console.log("user:", user);
 
     // Tjek om brugeren allerede er tilmeldt workouten
-    const alreadyJoined = user?.workoutClasses?.some(a => a.id === Number(workoutId));
+    const alreadyJoined = user?.classes?.some(c => c.id === Number(workoutId));
 
     return (
         <main>
@@ -73,11 +74,11 @@ export default async function ActivityDetailPage({ params }) {
                         </div>
                     </article>
 
-                    {/* <AddActivityButton
+                    <AddClassButton
                         userId={userId}
-                        activityId={activityId}
+                        classId={workoutId}
                         alreadyJoined={alreadyJoined}
-                    /> */}
+                    /> 
                 </section>
             </article>
             

@@ -28,14 +28,14 @@ export default async function PopularWorkoutClassesPage() {
         <main className='pb-14'>
             <h1 className='text-[1.5em] px-6 mt-6'>Popular Classes</h1>
             <section className='px-6'>
-                <WorkoutCard  classNameImage='rounded-tr-4xl rounded-tl-4xl rounded-bl-4xl' classNameYDiv='px-6 rounded-tr-4xl rounded-bl-4xl gap-2' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
+                <WorkoutCard  classNameImage='rounded-tr-4xl rounded-tl-4xl rounded-bl-4xl' classNameYDiv='px-6 rounded-tr-4xl rounded-bl-4xl gap-2 pr-10 w-[fit-content]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
             </section>
 
             <section className='pl-6'>
                 <h1 className='mt-8 text-[1em] font-bold'>Classes for You</h1>
                 <section  className='flex overflow-x-auto gap-2'>
                     { workoutClasses.map(workout => (
-                    <WorkoutCard classNameLink='min-w-[150px]' classNameImage='rounded-tr-2xl rounded-tl-2xl rounded-bl-2xl' classNameYDiv='text-[10px] h-[30%] px-2 rounded-tr-2xl rounded-bl-2xl gap-0' workout={workout} key={workout.id} />
+                    <WorkoutCard classNameLink='min-w-[150px]' classNameImage='rounded-tr-2xl rounded-tl-2xl rounded-bl-2xl' classNameYDiv='text-[10px] h-[30%] px-2 rounded-tr-3xl rounded-bl-2xl gap-0 w-full' workout={workout} key={workout.id} />
                     ))}
                 </section>
             </section>
