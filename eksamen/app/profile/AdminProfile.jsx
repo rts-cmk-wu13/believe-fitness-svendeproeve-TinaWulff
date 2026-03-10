@@ -5,12 +5,9 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 //import { FaPlus } from "react-icons/fa";
 
-export default async function InstructorProfile( { userId } ) {
+export default async function AdminProfile( { userId } ) {
 
     const allWorkoutClasses = await getWorkoutClasses();
-    const instructorClasses = allWorkoutClasses.filter(
-    workout => workout.userId === Number(userId)
-    );
 
     return (
         <section className='m-4'>
@@ -19,23 +16,27 @@ export default async function InstructorProfile( { userId } ) {
                 <FaPlus size={20} />
             </Link>
             </div> */}
-            {instructorClasses.map(workoutClass => (
+            {allWorkoutClasses.map(workoutClass => (
                 <article className='my-2 bg-white/80 px-4 py-6 text-black rounded-2xl border border-[#9E9E9E]'
                     key={workoutClass.id}>
                     <h3 className='text-xl pb-2 font-semibold'>{workoutClass.className}</h3>
                     <p className='pb-4 text-sm leading-5'>{workoutClass.classDay} kl. {workoutClass.classTime}</p>
                     <div className='flex justify-between'>
                         <p className='mb-3'>Max. participants: {workoutClass.maxParticipants}</p>
-                        <p className='mb-3'>Joined: {workoutClass.users.length}</p>
+                        <p className='mb-3'>Joined: number of joined</p>
                     </div>
-                    <Link className='bg-[#003147] text-white px-6 py-2 rounded-lg text-sm shadow-xl'
+
+                    <div className='flex justify-between'>
+                    <Link className='bg-[#F1C40E] text-black px-6 py-3 rounded-full text-xs font-bold uppercase leading-5 items-center'
                         href={`/deltagerliste/${workoutClass.id}`}>
                         Participants
                     </Link>
-                    <div className='flex gap-4'>
-                        <button className='bg-[#003147] text-white px-2 py-2 rounded-lg text-sm self-end'><FiEdit size={20} /></button>
-                        <button className='bg-[#003147] text-white px-2 py-2 rounded-lg text-sm self-end'><AiOutlineDelete size={20} /></button>
+                    <div className='flex gap-2'>
+                        <button className='bg-[#F1C40E] text-black px-3 py-3 rounded-full text-xs font-bold uppercase'><FiEdit size={20} /></button>
+                        <button className='bg-[#F1C40E] text-black px-3 py-3 rounded-full text-xs font-bold uppercase'><AiOutlineDelete size={20} /></button>
                     </div>
+                    </div>
+
                 </article>
             ))}
         </section>

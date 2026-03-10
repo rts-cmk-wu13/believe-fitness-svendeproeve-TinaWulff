@@ -1,18 +1,21 @@
 //import { cookies } from 'next/headers';
 //import { getUserDetails } from '../lib/dal';
-
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '../lib/getAuthentificatedUser';
 import { FaUserLarge } from "react-icons/fa6";
-import InstructorProfile from './InstructorProfile';
-import InstructorHeader from './InstructorHeader';
-import Link from 'next/link';
-import LogoutAction from './logOut-action';
+import ProfileHeader from './ProfileHeader';
+import LogOutBtn from './LogOutBtn';
+
+import AdminProfile from './AdminProfile';
+
 
 
 export default async function ProfilPage() {
 
     const user = await getAuthenticatedUser(); //Hjælpefunktion til at få id'et på den der er logget ind og hente brugerdata.
+
+    const userrole = (user.role === "admin") ? "Admin" : "Member";
 
 //    console.log("user:", user);
     //console.log("token:", token?.value);
@@ -21,15 +24,8 @@ export default async function ProfilPage() {
         // vis medlem-UI
         return (
             <section className='flex flex-col'>
-                <h1 className='text-xl my-4 px-6'>My profile</h1>
-            
-                <div className='text-black text-center py-2 px-6 flex items-center gap-2'>
-                    <div className='bg-[#F1C40E] w-[50px] h-[50px] flex items-center justify-center rounded-full'><FaUserLarge  size={25}/></div>
-                    <div>
-                    <p className='text-md text-left'>{user.userFirstName} {user.userLastName}</p>
-                    <p className='text-sm text-left'>Member</p>
-                    </div>
-                </div>
+           
+                <ProfileHeader />
 
                 <section className='m-4'>
                     {user.classes.map(workoutClass => (
@@ -43,9 +39,8 @@ export default async function ProfilPage() {
                         ))}
                 </section>
 
-                <form className='relative flex justify-center mr-4' action={LogoutAction}>
-                <button className='flex-end align-end bg-[#9E9E9E] px-10 py-3 rounded-full text-yellow-400 font-bold uppercase text-sm absolute top-[40px] shadow-lg' type='submit'>Log out</button>
-                </form>
+                <LogOutBtn />
+
             </section>
         )
     }
@@ -53,15 +48,13 @@ export default async function ProfilPage() {
     else if (user.role === "admin") {
         // vis instruktør-UI'
         return (
-            <>
-                <InstructorHeader />
+                <section>
+                    <ProfileHeader />
 
-                <InstructorProfile userId={user.id} />
-                
-                <form className='relative flex justify-center mr-4' action={LogoutAction}>
-                <button className='flex-end align-end bg-[#9E9E9E] px-10 py-3 rounded-full text-yellow-400 font-bold uppercase text-sm absolute top-[40px] shadow-lg' type='submit'>Log out</button>
-                </form>
-            </>
+                    <AdminProfile userId={user.id} />
+                    
+                    <LogOutBtn />
+                </section>
         )
     }
 }
