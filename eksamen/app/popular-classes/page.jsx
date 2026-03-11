@@ -22,9 +22,6 @@ export default async function PopularWorkoutClassesPage() {
 
   return (
     <>
-      <header>
-        <p>her skal være en burgermenu</p>
-      </header>
         <main className='pb-14'>
             <h1 className='text-[1.5em] px-6 mt-6'>Popular Classes</h1>
             <section className='px-6'>
