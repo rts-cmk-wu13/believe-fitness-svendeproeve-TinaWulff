@@ -1,5 +1,13 @@
 // DAL - Data Access Layer
 
+export async function getNews() {
+    const response = await fetch("http://localhost:4000/api/v1/news", { next: { revalidate: 60*60*24 } });
+    const data = await response.json();
+
+    console.log(data);
+    return data;
+}
+
 export async function getWorkoutClasses() {
     const response = await fetch("http://localhost:4000/api/v1/classes", { next: { revalidate: 60*60*24 } });
     const data = await response.json();
@@ -129,15 +137,12 @@ export async function getTrainer(id) {
     }
 }
 
-
-
-// Bruges ikke:
-/* export async function getAllAssets() {
+ export async function getAllAssets() {
     try {
 
     const res = await fetch(`http://localhost:4000/api/v1/assets`);
     if (!res.ok) {
-        throw new Error("Failed to fetch the blog post");
+        throw new Error("Failed to fetch the assets");
     }
     
     if (res.status !== 200) {
@@ -161,4 +166,4 @@ export async function getTrainer(id) {
         message: "something went wrong on the server, try again later"
     }
 }
-} */
+} 

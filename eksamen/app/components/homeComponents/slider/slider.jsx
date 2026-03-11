@@ -15,7 +15,6 @@ export default function Slider() {
 
   const [testimonials, setTestimonials] = useState([]);
 
-
   useEffect(() => {
   if (emblaApi) {
     // eslint-disable-next-line no-console
@@ -40,22 +39,22 @@ export default function Slider() {
     const goToNext = () => emblaApi && typeof emblaApi.scrollNext === 'function' && emblaApi.scrollNext();
 
     return (
-        <section className="embla bg-blue-950 flex flex-col items-center py-12">
-            <h2 className="mx-6 text-3xl w-[60%] text-center font-[500] mb-6">Det siger vores kunder om os</h2>
+        <section className="embla bg-blue-950 flex flex-col items-center py-8">
+            <h2 className="mx-6 text-3xl w-[60%] text-center font-[500] mb-6">A word from other Believers</h2>
             <div className="embla w-full overflow-hidden" ref={emblaRef}>
                 <div className="embla__container flex" >
                     {testimonials.map((testimonial, idx) => (
                         <article className="embla__slide flex-[0_0_100%] flex flex-col items-center justify-center" key={idx}>
-                            <p className="mx-6 text-m w-full max-w-xl text-center font-[400] mb-4  px-16">{testimonial.content}</p>
-                            <p className="mx-6 text-xl w-full max-w-xl text-center font-[700]">{testimonial.name}</p>
+                            <p className="mx-6 text-m w-full max-w-xl text-center font-[400] mb-4  px-16">{testimonial.text}</p>
+                            <p className="mx-6 text-md w-full max-w-xl text-center font-[700]">{testimonial.name}</p>
                             <p className="mx-6 text-xs w-full max-w-xl text-center font-[500] mb-4">{testimonial.occupation}</p>
                         </article>
                     ))}
                 </div>
             </div>
-            <div className='flex mt-6 cursor-pointer'>
-            <button disabled={!emblaApi} className="embla__prev" onClick={goToPrev}><IoChevronBackCircleOutline size={50}/></button>
-            <button disabled={!emblaApi} className="embla__next" onClick={goToNext}><IoChevronForwardCircleOutline size={50}/></button>
+            <div className='flex cursor-pointer'>
+            <button disabled={!emblaApi} className="embla__prev" onClick={goToPrev}><IoChevronBackCircleOutline size={55}/></button>
+            <button disabled={!emblaApi} className="embla__next" onClick={goToNext}><IoChevronForwardCircleOutline size={55}/></button>
             </div>
         </section>
     )

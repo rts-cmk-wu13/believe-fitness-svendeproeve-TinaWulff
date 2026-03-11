@@ -3,8 +3,7 @@
     import { useEffect, useState } from "react";
     import Link from "next/link";
     import Image from "next/image";
-    import heroImg from "../../../assets/heroimg.jpg";
-    import landrupLogo from "../../../assets/landrup-logo.png";
+    import heroImg from "../../assets/welcome.jpg";
     import { BsChevronDoubleDown } from "react-icons/bs";
 
 
