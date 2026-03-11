@@ -3,6 +3,8 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { getTestimonials } from "./slider-fetch";
 import { useEffect, useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
+import Image from 'next/image';
+import splash1 from "../../../assets/splash1.png"
 
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
@@ -39,20 +41,23 @@ export default function Slider() {
     const goToNext = () => emblaApi && typeof emblaApi.scrollNext === 'function' && emblaApi.scrollNext();
 
     return (
-        <section className="embla bg-blue-950 flex flex-col items-center py-8">
-            <h2 className="mx-6 text-3xl w-[60%] text-center font-[500] mb-6">A word from other Believers</h2>
-            <div className="embla w-full overflow-hidden" ref={emblaRef}>
+        <section className="embla mb-8 flex flex-col items-center justify-center">
+            <div className="relative w-full">
+            <Image width={1218} height={812} src={splash1} className="relative max-w-full h-auto object-cover"/>
+            <div className='bg-black/50 w-full h-auto inset-0 absolute z-10'></div>
+            </div>
+            <h2 className="absolute z-100 mb-50 text-white mx-6 text-2xl w-[60%] text-center font-[600]">A word from other Believers</h2>
+            <div className="absolute z-200 embla w-full overflow-hidden" ref={emblaRef}>
                 <div className="embla__container flex" >
                     {testimonials.map((testimonial, idx) => (
-                        <article className="embla__slide flex-[0_0_100%] flex flex-col items-center justify-center" key={idx}>
+                        <article className="mt-5 text-white embla__slide flex-[0_0_100%] flex flex-col items-center justify-center" key={idx}>
                             <p className="mx-6 text-m w-full max-w-xl text-center font-[400] mb-4  px-16">{testimonial.text}</p>
                             <p className="mx-6 text-md w-full max-w-xl text-center font-[700]">{testimonial.name}</p>
-                            <p className="mx-6 text-xs w-full max-w-xl text-center font-[500] mb-4">{testimonial.occupation}</p>
                         </article>
                     ))}
                 </div>
             </div>
-            <div className='flex cursor-pointer'>
+            <div className="absolute mt-60 z-100 text-white flex cursor-pointer">
             <button disabled={!emblaApi} className="embla__prev" onClick={goToPrev}><IoChevronBackCircleOutline size={55}/></button>
             <button disabled={!emblaApi} className="embla__next" onClick={goToNext}><IoChevronForwardCircleOutline size={55}/></button>
             </div>

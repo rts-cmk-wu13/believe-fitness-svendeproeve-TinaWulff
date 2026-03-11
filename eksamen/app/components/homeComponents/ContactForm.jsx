@@ -16,7 +16,7 @@ export default function ContactForm() {
 
 return (
    
- <section className="mx-6  mt-4 mb-12">
+ <section className="mx-6 mb-12">
     <h2 className="text-2xl font-bold">Contact us</h2>
     <p className="my-2 mb-4">Ask us anything about Believe Fitness!</p>
 
