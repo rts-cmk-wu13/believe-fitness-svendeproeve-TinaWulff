@@ -28,7 +28,7 @@ export default async function PopularWorkoutClassesPage() {
         <main className='pb-14'>
             <h1 className='text-[1.5em] px-6 mt-6'>Popular Classes</h1>
             <section className='px-6'>
-                <WorkoutCard  classNameImage='rounded-tr-4xl rounded-tl-4xl rounded-bl-4xl' classNameYDiv='px-6 rounded-tr-4xl rounded-bl-4xl gap-2 pr-10 w-[fit-content]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
+                <WorkoutCard  classNameImage='rounded-3xl' classNameYDiv='px-6 pr-30 rounded-tr-full rounded-bl-3xl gap-2 w-[fit-content]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
             </section>
 
             <section className='pl-6'>

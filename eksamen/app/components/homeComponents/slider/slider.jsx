@@ -4,7 +4,6 @@ import { getTestimonials } from "./slider-fetch";
 import { useEffect, useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import splash1 from "../../../assets/splash1.png"
 
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
@@ -43,7 +42,7 @@ export default function Slider() {
     return (
         <section className="embla mb-8 flex flex-col items-center justify-center">
             <div className="relative w-full">
-            <Image width={1218} height={812} src={splash1} className="relative max-w-full h-auto object-cover"/>
+            <Image width={1218} height={812} src="/assets/splash1.png" className="relative max-w-full h-auto object-cover" alt="Hero image" />
             <div className='bg-black/50 w-full h-auto inset-0 absolute z-10'></div>
             </div>
             <h2 className="absolute z-100 mb-50 text-white mx-6 text-2xl w-[60%] text-center font-[600]">A word from other Believers</h2>

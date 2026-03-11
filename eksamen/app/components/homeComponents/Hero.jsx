@@ -3,9 +3,8 @@
     import { useEffect, useState } from "react";
     import Link from "next/link";
     import Image from "next/image";
-    import heroImg from "../../assets/welcome.jpg";
-    import { BsChevronDoubleDown } from "react-icons/bs";
-
+    // import HeroImg from "../../assets/welcome.jpg";
+    //import splash2 from "../../assets/splash2.png"
 
     export default function HeroComp() {
     
@@ -33,24 +32,57 @@
 
 
     return (
-    <section className="flex flex-col h-[100vh] justify-between z-full max-w-full">
-        <Image width={1499} height={1000} className="absolute h-[100vh] w-full object-cover" src={heroImg} alt="Hero Image" />
-        <Image width={600} height={400} className="relative z-10 mt-20 max-w-[90%]" src={landrupLogo} alt="Landrup Logo" />
-        <div className="flex flex-col mx-20">
-        {!loggedIn ? (
-          <Link href="/login"
-            className="flex justify-center bg-[#E9E9E9] text-[#003147] text-lg items-center p-4 rounded-lg z-10 h-[53px] w-full max-w-[300px] self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
-            Log ind her
-          </Link>
-        ) : (
-          <Link href="/profil"
-            className="flex justify-center bg-[#E9E9E9] text-[#003147] text-lg items-center p-4 rounded-lg z-10 h-[53px] w-full max-w-[300px] self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
-            Gå til profil
-          </Link>
-        )}
-        <a href="#TeamTypesSection" className="z-10 relative self-center"><BsChevronDoubleDown size={70} className="text-[#003147] font-extralight mt-6 mb-4" /></a>
+      <section className="w-full h-[auto] relative mb-8">
+        
+        <Image width={1499} height={1000} className="aspect-4/3 inset-0 object-cover w-full" src="/assets/welcome.jpg" alt="Hero Image" />
+        
+        <div className="flex flex-col absolute inset-0 justify-end mb-8">
+          <h1 className="z-100 mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
+          <div className="flex gap-2 px-6 items-end">
+            
+                <Link href="/popular-classes"
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                Classes
+              </Link>
+            {!loggedIn ? (
+              <Link href="/login"
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                Log ind
+              </Link>
+            ) : (
+              <Link href="/profil"
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                Profile
+              </Link>
+            )}
+          </div>   
         </div>
      </section>
     )
 
     }
+
+    //       <section className="relative flex flex-col justify-end pb-6 w-full max-w-full justify-end">
+    //     <div className="absolute inset-0 flex flex-col">
+    //       <h1 className="top-80 self-end z-100 absolute mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
+    //       <Image width={1499} height={1000} className="absolute aspect-4/3 inset-0 object-cover w-full" src="/assets/welcome.jpg" alt="Hero Image" />
+        
+    //       <div className="flex gap-2 px-6 items-end absolute">
+    //             <Link href="/login"
+    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+    //             Classes
+    //           </Link>
+    //         {!loggedIn ? (
+    //           <Link href="/login"
+    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+    //             Log ind
+    //           </Link>
+    //         ) : (
+    //           <Link href="/profil"
+    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+    //             Profile
+    //           </Link>
+    //         )}
+    //       </div>   
+    //     </div>
+    //  </section>
