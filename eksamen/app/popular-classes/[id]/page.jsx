@@ -46,10 +46,11 @@ export default async function ActivityDetailPage({ params }) {
         <main>
             <article className='flex flex-col'>
                 <div className='flex justify-start items-end relative'>
+                    <div className='bg-black/30 w-full h-auto inset-0 absolute z-10'></div>
                     <Image className='w-full object-cover aspect-square max-h-[700px]'
                     width={697} height={646} src={workout.asset.url} alt={workout.className} unoptimized/>
 
-                    <div className='mt-6 mx-6 absolute text-[#F1C40E]'>
+                    <div className='mt-6 mx-6 z-10 absolute text-[#F1C40E]'>
                         <h1 className='text-3xl font-semibold max-w-[70%]'>{workout.className}</h1>
                         <div className="pt-1 pb-2 flex gap-1">
                             <GoStarFill  size={16} />

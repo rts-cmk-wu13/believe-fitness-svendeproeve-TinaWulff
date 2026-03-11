@@ -33,25 +33,25 @@
 
     return (
       <section className="w-full h-[auto] relative mb-8">
-        
+        <div className='bg-black/40 w-full h-auto inset-0 absolute z-10'></div>
         <Image width={1499} height={1000} className="aspect-4/3 inset-0 object-cover w-full" src="/assets/welcome.jpg" alt="Hero Image" />
         
         <div className="flex flex-col absolute inset-0 justify-end mb-8">
-          <h1 className="z-100 mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
+          <h1 className="z-11 mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
           <div className="flex gap-2 px-6 items-end">
             
                 <Link href="/popular-classes"
-                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-11 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
                 Classes
               </Link>
             {!loggedIn ? (
               <Link href="/login"
-                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-11 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
                 Log ind
               </Link>
             ) : (
               <Link href="/profil"
-                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
+                className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-11 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
                 Profile
               </Link>
             )}
