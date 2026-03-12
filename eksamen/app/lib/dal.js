@@ -137,10 +137,20 @@ export async function getTrainer(id) {
     }
 }
 
+    export async function getTrainers() {
+        const response = await fetch("http://localhost:4000/api/v1/trainers", { next: { revalidate: 60*60*24 } });
+        const data = await response.json();
+
+        console.log(data);
+        return data;
+    }
+
+
+
  export async function getAllAssets() {
     try {
 
-    const res = await fetch(`http://localhost:4000/api/v1/assets`);
+    const res = await fetch("http://localhost:4000/api/v1/assets");
     if (!res.ok) {
         throw new Error("Failed to fetch the assets");
     }

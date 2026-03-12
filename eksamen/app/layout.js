@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <body
           className={`${poppins.className} antialiased`}
         >
-          <header>
+          <header className="relative z-2000">
             <Header />
           </header>
 
