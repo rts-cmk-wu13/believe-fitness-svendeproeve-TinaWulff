@@ -9,9 +9,7 @@ import { FaUserLarge } from "react-icons/fa6";
 
     return (
         <>
-            <header>
-                <h1 className='text-xl my-4 px-6'>My profile</h1>
-            
+            <header className="pt-12">
                 <div className='text-black text-center py-4 px-6 flex items-center gap-4'>
                     <div className='bg-[#F1C40E] w-[50px] h-[50px] flex items-center justify-center rounded-full'><FaUserLarge  size={25}/></div>
                     <div>

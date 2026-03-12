@@ -15,7 +15,7 @@ export async function registerEmail(prevState, formData) { // når vi laver en a
 
     console.log(email);
 
-    if (email === prevState.values.email) {
+    if (email === prevState.values.email && prevState.success) {
         return prevState;
     } // hvis det er samme values der indsættes og forsøges at logge ind med flere gange,
     // så returnerer vi bare den forrige state, så vi ikke starter hele login-processen forfra

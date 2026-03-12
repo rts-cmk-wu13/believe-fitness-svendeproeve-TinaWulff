@@ -15,14 +15,14 @@ export default async function ParticipantsList( {params} ) {
             <ProfileHeader />
 
             <section className="p-6">
-                <h1 className="text-xl font-semibold mb-2">{workout.name}</h1>
-                <h2 className="text-lg font-semibold mb-4">Deltagere:</h2>
+                <h1 className="text-xl font-[500] mb-2">{workout.className}</h1>
+                <h2 className="text-md mt-4 font-semibold mb-4">Participants:</h2>
                 <ul>
                     {workout.users.map((user) => (
-                        <li className="flex justify-between bg-white/80 p-2 rounded-lg text-[#003147] mb-4"
+                        <li className="border-solid outline rounded-full border-inherit flex justify-between px-5 py-3 mb-4"
                             key={user.id}>
                             <p className="self-center leading-none"><FaUserLarge size={15} className="inline mr-2"/>{user.userFirstName} {user.userLastName}</p>
-                            <p>age: {user.age}</p>
+                            {/* <p>age: {user.age}</p> */}
                         </li>
                     ))}
                 </ul>

@@ -4,8 +4,8 @@ import { z }from "zod";
 import { cookies } from "next/headers";
 
 const emailSchema = z.object({
+    name: z.string().min(2, "indtast dit navn"),
     email: z.string().email("Indtast venligst en gyldig email!"),
-    name: z.string("indtast dit navn"),
     message: z.string().min(10, "Beskeden skal være mindst 10 tegn lang")
 });
 
@@ -13,24 +13,24 @@ export async function ContactMessage(prevState, formData) { // når vi laver en 
 
     const cookieStore = await cookies();
 
-    const email = formData.get("email");
     const name = formData.get("name");
+    const email = formData.get("email");
     const message = formData.get("message");
 
-    console.log(email, name, message);
+    console.log( name, email, message);
 
-    if (email === prevState.values.email) {
+    if (email === prevState.values.email && prevState.success) {
         return prevState;
     } // hvis det er samme values der indsættes og forsøges at logge ind med flere gange,
     // så returnerer vi bare den forrige state, så vi ikke starter hele login-processen forfra
     // og dermed ikke laver unødvendige kald til serveren.
 
-    const result = emailSchema.safeParse({ email, name, message });
+    const result = emailSchema.safeParse({ name, email, message });
 
     if (!result.success) {
         console.log(z.flattenError(result.error).fieldErrors);  
         return {
-            values: { email, name, message },
+            values: {  name, email, message },
             errors: z.flattenError(result.error).fieldErrors 
         }
     }

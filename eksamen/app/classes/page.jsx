@@ -22,10 +22,9 @@ export default async function PopularWorkoutClassesPage() {
 
   return (
     <>
-        <main className='pb-14'>
-            <h1 className='text-[1.5em] px-6 mt-6'>Popular Classes</h1>
+        <section className='pt-14 pb-8'>
             <section className='px-6'>
-                <WorkoutCard  classNameImage='rounded-3xl' classNameYDiv='px-6 pr-30 rounded-tr-full rounded-bl-2xl gap-2 w-[fit-content]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
+                <WorkoutCard  classNameImage='rounded-3xl' classNameYDiv='px-6 pr-30 py-6 rounded-tr-full rounded-bl-2xl gap-2 w-[fit-content] max-w-[90%]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
             </section>
 
             <section className='pl-6'>
@@ -36,7 +35,7 @@ export default async function PopularWorkoutClassesPage() {
                     ))}
                 </section>
             </section>
-        </main>
+        </section>
     </>
   );
 }

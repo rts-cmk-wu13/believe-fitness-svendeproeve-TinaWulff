@@ -53,7 +53,7 @@ export default function LoginForm() {
             </div>
             <div className="flex justify-center">
                 { state.errors?.form && <p>{state.errors.form}</p> }
-                <button className="text-[#003147] bg-[#F1C40E] p-3 w-full rounded-full text-sm font-bold"
+                <button className="hover:cursor-pointer text-[#003147] bg-[#F1C40E] p-3 w-full rounded-full text-sm font-bold"
                 type="submit"
                 disabled={isPending}>{ isPending ? "Loggin in..." : "LOG IN" }</button>
             </div>
