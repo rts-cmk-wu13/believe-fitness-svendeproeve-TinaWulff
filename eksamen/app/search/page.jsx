@@ -25,7 +25,7 @@ export default async function SearchPage() {
             <Search />
 
             <section className='pl-6 mt-2'>
-                <h2 className='mt-2 text-[1em] font-bold'>Classes for You</h2>
+                <h2 className='mt-2 text-xl font-bold'>Classes for You</h2>
                 <section  className='flex overflow-x-auto gap-2'>
                     { workoutClasses.map(workout => (
                     <WorkoutCard key={workout.id} workout={workout} 
@@ -34,9 +34,9 @@ export default async function SearchPage() {
                 </section>
             </section>
 
-            <section className='mt-8 px-6 text-[1em] font-bold h-[200px] fixed'>
-                <h2>Popular Trainers</h2>
-                <section  className='flex flex-col gap-2 overflow-y-auto '>
+            <section className='mt-8 px-6 text-[1em] font-bold fixed'>
+                <h2 className='text-xl'>Popular Trainers</h2>
+                <section  className='flex flex-col gap-2 overflow-y-auto h-[500px]'>
                     { trainers.map(trainer => (
                     <div key={trainer.id} className='flex gap-4 mt-6 items-center'>
                         <Image width={697} height={646} unoptimized 

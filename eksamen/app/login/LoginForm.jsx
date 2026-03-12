@@ -35,7 +35,7 @@ export default function LoginForm() {
         className="mx-7 flex flex-col gap-6">
             <h1 className="text-lg mt-10 font-semibold">Log in with your credentials</h1>
             <div>
-                <input lassName="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
+                <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                  type="text"
                  name="username"
                  defaultValue={state.values.username}

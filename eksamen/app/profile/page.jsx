@@ -6,6 +6,8 @@ import { getAuthenticatedUser } from '../lib/getAuthentificatedUser';
 import { FaUserLarge } from "react-icons/fa6";
 import ProfileHeader from './ProfileHeader';
 import LogOutBtn from './LogOutBtn';
+import LeaveBtn from './LeaveBtn'
+
 
 import AdminProfile from './AdminProfile';
 
@@ -16,6 +18,9 @@ export default async function ProfilPage() {
     const user = await getAuthenticatedUser(); //Hjælpefunktion til at få id'et på den der er logget ind og hente brugerdata.
 
     const userrole = (user.role === "admin") ? "Admin" : "Member";
+
+
+
 
 //    console.log("user:", user);
     //console.log("token:", token?.value);
@@ -29,12 +34,17 @@ export default async function ProfilPage() {
 
                 <section className='m-4'>
                     {user.classes.map(workoutClass => (
-                            <article className='my-2 bg-white/80 px-4 py-6 text-black rounded-2xl border border-[#9E9E9E]'
+                            <article className='my-6 bg-white/80 px-4 py-6 text-black rounded-3xl border border-[#9E9E9E]'
                                 key={workoutClass.id}>
-                                <h3 className='text-xl pb-2 font-semibold'>{workoutClass.className}</h3>
-                                <p className='pb-4 text-sm leading-5'>{workoutClass.classDay} kl. {workoutClass.classTime}</p>
-                                <Link className='bg-[#F1C40E] text-black px-6 py-3 rounded-full text-xs font-bold uppercase'
-                                href={`/popular-classes/${workoutClass.id}`}>Show Class</Link>
+                                <h3 className='text-3xl pb-2 font-[500]'>{workoutClass.className}</h3>
+                                <p className='pb-4 text-m leading-5'>{workoutClass.classDay} kl. {workoutClass.classTime}</p>
+                                <div className='flex justify-between'>
+                                    <Link className='bg-[#F1C40E] text-black px-6 py-4 rounded-full text-sm font-bold uppercase'
+                                    href={`/popular-classes/${workoutClass.id}`}>Show Class</Link>
+
+                                   <LeaveBtn userId={user.id} classId={workoutClass.id} />
+
+                                </div>
                             </article>
                         ))}
                 </section>
