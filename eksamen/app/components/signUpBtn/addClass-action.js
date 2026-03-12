@@ -46,6 +46,13 @@ export async function AddUserToClass(prevState, formData) {
     return { success: false, message: "Du kan ikke tilmelde dig to aktiviteterder foregår samme ugedag." };
   }
 
+  // 2. Tjek for om joined users er mindre end maxParticipants
+  const maxParticipantsReached = workout.users.length >= workout.maxParticipants
+  if (maxParticipantsReached && method === "POST") {
+        return { success: false, message: "The workout class is fully booked, no more spots available" };
+  }
+
+
   const response = await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classId}`, {
     method: method,
     headers: {
