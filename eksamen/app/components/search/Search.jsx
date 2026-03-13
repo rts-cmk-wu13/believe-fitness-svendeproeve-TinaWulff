@@ -1,5 +1,6 @@
 'use client';
 import { FiSearch } from "react-icons/fi";
+import Link from "next/link";
 
 import { useRef, useState, useEffect } from "react";
 
@@ -30,8 +31,6 @@ export default function Search() {
   }, []);
 
 
-  // Tilføj også så hvis der ikke er nogle søgeresultater, vises i stedet teksten
-  // ”Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet.”
 
   return (
     <div ref={ref} className="w-full flex flex-col p-6 mt-10 text-black">
@@ -49,25 +48,40 @@ export default function Search() {
       </form>
 
       {showResults && results && (
-        <ul>
-          {/* brug spread-operator til at samle resultaterne fra flere arrays og putte i et array */}
-          {[...(results.workouts || []), ...(results.weekdays || []), ...(results.trainers || [])].map((item) => (
-            <li key={item.id || item.className || item.trainerName || item.classDay}>
-                {item.className || item.trainerName || item.classDay}
-            </li>
-          ))}
-        </ul>
+        (() => {
+          const allItems = [
+            ...(results.workouts || []),
+            ...(results.weekdays || []),
+            ...(results.trainers || []),
+            ...(results.description || [])
+          ].filter((item, index, array) => 
+            array.findIndex(element => element.id === item.id) === index
+          );
+          return allItems.length > 0 ? (
+            <ul>
+              {allItems.map((item) => (
+                <li key={item.id || item.className || item.trainerName || item.classDay}>
+                  <Link href={`/classes/${item.id}`}>
+                    { item.className }
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Your search did not give any results. Try to search for something else.</p>
+          );
+        })()
       )}
     </div>
   );
 }
 
-/* Jeg har en React-komponent, der viser et søgefelt. Når brugeren skriver og søger, bliver der lavet et API-kald til /api/search, og resultater vises under feltet.
+/* Jeg har en React-komponent, der viser et søgefelt. Når brugeren skriver og søger, bliver der lavet et API-kald til /api/search, og resultaterne vises under feltet.
 
 Hvorfor fetch til API-route?
 Jeg laver et fetch-kald til /api/search for at:
 
 Sende søgeordet til serveren (backend).
 Få relevante resultater tilbage (aktiviteter og brugere).
-Dette kaldes typisk en "API request" eller "server-side search". Det er en god praksis, fordi du kan søge i data på serveren, og kun sende relevante resultater tilbage til klienten.
+Dette kaldes en "API request" eller "server-side search". Det er en god praksis, fordi du kan søge i data på serveren, og kun sende relevante resultater tilbage til klienten.
  */

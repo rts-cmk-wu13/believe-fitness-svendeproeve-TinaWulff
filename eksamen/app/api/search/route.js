@@ -42,18 +42,17 @@ export async function GET(request) {
     wc.trainer.trainerName.toLowerCase().includes(query)
   );
 
+    const descriptionResults = workoutClasses.filter(wc =>
+    wc.classDescription &&
+    wc.classDescription.toLowerCase().includes(query)
+  );
 
-  
-  // ikke mulig skal hentes på specifikt id og kræver desuden token, så kun mulig at hente egne oplysninger ud på det fetch kald.
-  // const InstructorResults = userDetails.filter(u =>
-  //   u.firstname.toLowerCase().includes(query)
-  // );
 
   return NextResponse.json({
     workouts: ClassesResults,
     weekdays: weekdayResults,
     trainers: TrainersResults,
-    //instructors: InstructorResults,
+    description: descriptionResults,
   });
 
    } catch (error) {
