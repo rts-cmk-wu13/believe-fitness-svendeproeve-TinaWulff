@@ -44,7 +44,7 @@ export default function Header() {
             <button className="left-0 top-0 mt-4 absolute hover:cursor-pointer inline" onClick={() => router.back()}>
                 <IoArrowBackOutline size={30} className={pathname !== "/" ? "text-[#F1C40E] mx-6" : "hidden" } />
             </button>
-            <h1 className={ !pathname.startsWith('/my-profile/') ? "absolute mt-4 left-20 text-2xl capitalize" : "hidden" }>{Headline}</h1>
+            <h1 className={ !pathname.startsWith('/my-profile/') && !pathname.startsWith('/classes/') ? "absolute mt-4 left-20 text-2xl capitalize" : "hidden" }>{Headline}</h1>
 
             <nav  className="col-span-3 row-1 flex absoulte bg-white z-1000 justify-end w-full content-normal">            
                 { showMenu ? 

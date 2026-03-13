@@ -3,7 +3,7 @@
     import { useActionState } from 'react';
     import { useRouter } from 'next/navigation';
     import { useEffect, useState } from 'react';
-    import { DeleteClassFromUser } from "./deleteClass-action"
+    import { DeleteClassFromUser } from "./userLeaveClass-action"
 
     export default function LeaveBtn( {userId, classId} ) {
     const initialState = { success: false, message: "" };

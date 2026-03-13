@@ -1,22 +1,24 @@
 
 import { getWorkoutClasses, getWorkoutDetails } from '../lib/dal';
 import Link from 'next/link';
-import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
-//import { FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import DeleteClassBtn from "./DeleteClassBtn";
 
 export default async function AdminProfile( { userId } ) {
 
     const allWorkoutClasses = await getWorkoutClasses();
     const allWorkoutDetails = await Promise.all(allWorkoutClasses.map(wc => getWorkoutDetails(wc.id)));
 
+
+
     return (
         <section className='m-4'>
-            {/* <div className='flex justify-between items-end'>
-            <Link href="/opret-hold" className='bg-white text-[#003147] px-2 py-2 rounded-lg text-sm shadow-xl'>
+            <div className='flex justify-end items-end'>
+            <Link href="/create-class" className='bg-[#F1C40E] text-black px-2 py-2 rounded-lg text-sm shadow-xl'>
                 <FaPlus size={20} />
             </Link>
-            </div> */}
+            </div>
             {allWorkoutDetails.map(workoutClass => (
                 <article className='my-2 bg-white/80 px-4 py-6 text-black rounded-2xl border border-[#9E9E9E]'
                     key={workoutClass.id}>
@@ -33,8 +35,8 @@ export default async function AdminProfile( { userId } ) {
                         Participants
                     </Link>
                     <div className='flex gap-2'>
-                        <button className='bg-[#F1C40E] text-black px-3 py-3 rounded-full text-xs font-bold uppercase'><FiEdit size={20} /></button>
-                        <button className='bg-[#F1C40E] text-black px-3 py-3 rounded-full text-xs font-bold uppercase'><AiOutlineDelete size={20} /></button>
+                        {/* <button className='bg-[#F1C40E] text-black px-3 py-3 rounded-full text-xs font-bold uppercase'><FiEdit size={20} /></button> */}
+                        <DeleteClassBtn classId={workoutClass.id} />
                     </div>
                     </div>
 

@@ -23,7 +23,7 @@ export default function CreateClassForm() {
 
     return (
         <form action={formAction} 
-        className="mx-7 grid grid-cols-2 gap-6 mb-10 pb-10 pt-10">
+        className="mx-7 grid grid-cols-2 gap-6 mb-10 pb-10 pt-10 max-w-full">
             <h1 className="text-xl font-bold mt-14 col-span-2">Create a new class</h1>
 
             <div className="col-span-2">
@@ -78,7 +78,7 @@ export default function CreateClassForm() {
                 {state.errors?.trainerId && <p>{state.errors.trainerId}</p>}
             </div>
 
-               <div>
+            <div>
                 <input className="border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg"
                 type="text"
                 name="maxParticipants"
@@ -87,10 +87,10 @@ export default function CreateClassForm() {
                 {state.errors?.maxParticipants && <p>{state.errors.maxParticipants}</p>}
             </div>
 
-            <div >
+            <div className="col-span-2 mr-4">
                 <p className="mb-2">Choose an Image:</p>
                 <label htmlFor="file-upload" className="cursor-pointer border-solid outline rounded-full border-inherit w-full text-s text-[#9E9E9E] p-2 text-lg">
-                <input type="file" name="asset" accept=".jpeg,.jpg,.png"/>
+                <input type="file" name="asset" accept=".jpeg,.jpg,.png" className="w-full"/>
                 {/* FYI defaultValue virker ikke på images, fordi filinput ikke kan have en defaultValue af sikkerhedsmæssige årsager */}
                 </label>
                 <span className="error-besked">
@@ -107,7 +107,7 @@ export default function CreateClassForm() {
 
                         <p className="mb-4">{state.success}</p>
 
-                        <Link href="/profile" className="bg-[#F1C40E] text-black uppercase py-3 px-6 rounded-full mt-4">
+                        <Link href="/my-profile" className="bg-[#F1C40E] text-black uppercase py-3 px-6 rounded-full mt-4">
                             go back to profile
                         </Link>
                     
