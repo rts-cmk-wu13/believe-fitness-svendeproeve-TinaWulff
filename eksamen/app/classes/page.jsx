@@ -22,18 +22,16 @@ export default async function PopularWorkoutClassesPage() {
 
   return (
     <>
-        <section className='pt-14 pb-8'>
-            <section className='px-6'>
-                <WorkoutCard  classNameImage='rounded-3xl' classNameYDiv='px-6 pr-30 py-6 rounded-tr-full rounded-bl-2xl gap-2 w-[fit-content] max-w-[90%]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
-            </section>
+        <section className='pt-14 px-6'>
+            <WorkoutCard  classNameImage='rounded-3xl' classNameYDiv='px-6 pr-30 py-6 rounded-tr-full rounded-bl-2xl gap-2 w-[fit-content] max-w-[90%]' workout={randomWorkoutClass} key={randomWorkoutClass.id} />
+        </section>
 
-            <section className='pl-6'>
-                <h1 className='mt-8 text-[1em] font-bold'>Classes for You</h1>
-                <section  className='flex overflow-x-auto gap-2'>
-                    { workoutClasses.map(workout => (
-                    <WorkoutCard classNameLink='min-w-[150px]' classNameImage='rounded-tr-2xl rounded-tl-2xl rounded-bl-2xl' classNameYDiv='text-[10px] h-[30%] px-2 rounded-tr-3xl rounded-bl-2xl gap-0 w-full' workout={workout} key={workout.id} />
-                    ))}
-                </section>
+        <section className='pl-6 pb-8'>
+            <h1 className='mt-8 text-[1em] font-bold'>Classes for You</h1>
+            <section  className='flex overflow-x-auto gap-2'>
+                { workoutClasses.map(workout => (
+                <WorkoutCard classNameLink='min-w-[150px]' classNameImage='rounded-tr-2xl rounded-tl-2xl rounded-bl-2xl' classNameYDiv='text-[10px] h-[30%] px-2 rounded-tr-3xl rounded-bl-2xl gap-0 w-full' workout={workout} key={workout.id} />
+                ))}
             </section>
         </section>
     </>
