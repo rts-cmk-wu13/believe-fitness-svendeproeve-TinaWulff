@@ -5,7 +5,7 @@
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 //import Menu from "./Menu"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoArrowBackOutline } from "react-icons/io5";
@@ -20,12 +20,21 @@ export default function Header() {
         return path === currentPath ? "text-black" : "text-[#6F6F6F]";
     }
     const pathname = usePathname();
-    // const [loggedIn, setLoggedIn] = useState(false);
 
-    // useEffect(() => {
-    //     setLoggedIn(document.cookie.includes('accessToken='));
-    // }, []);
-    const Headline = pathname.slice(1);
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        async function checkLogin() {
+            const res = await fetch('/api/auth/check', { cache: 'no-store' });
+            const data = await res.json();
+            setLoggedIn(data.loggedIn);
+        }
+        checkLogin();
+    }, [pathname]); // kører igen når pathname skifter (fx efter login/logout redirect)
+    
+    
+    const Headline = pathname.slice(1).replace(/-/, ' '); 
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -35,7 +44,7 @@ export default function Header() {
             <button className="left-0 top-0 mt-4 absolute hover:cursor-pointer inline" onClick={() => router.back()}>
                 <IoArrowBackOutline size={30} className={pathname !== "/" ? "text-[#F1C40E] mx-6" : "hidden" } />
             </button>
-            <h1 className={!pathname.startsWith('/classes/') && !pathname.startsWith('/profile/') ? "absolute mt-4 left-20 text-2xl capitalize" : "hidden" }>{Headline}</h1>
+            <h1 className={ !pathname.startsWith('/my-profile/') ? "absolute mt-4 left-20 text-2xl capitalize" : "hidden" }>{Headline}</h1>
 
             <nav  className="col-span-3 row-1 flex absoulte bg-white z-1000 justify-end w-full content-normal">            
                 { showMenu ? 
@@ -57,11 +66,13 @@ export default function Header() {
                     <li>
                         <Link className={` ${isActive("/search", pathname)}`} href="/search" onClick={() => setShowMenu(false)}>Search</Link>
                     </li>
+                    {loggedIn && (
                     <li>
-                        <Link className={` ${isActive("/profile", pathname)}`} href="/profile" onClick={() => setShowMenu(false)}>Profile</Link> {/* Fjernet: { profilMenuText } - Skift mellem "Profil" og "Log ind" baseret på loginstatus */}
+                        <Link className={` ${isActive("/profile", pathname)}`} href="/my-profile" onClick={() => setShowMenu(false)}>My Profile</Link>
                     </li>
+                    )}
                     <li>
-                        <LogOutBtn />
+                        {loggedIn ? <LogOutBtn /> : <Link href="/login" onClick={() => setShowMenu(false)}>Log in</Link>}
                     </li>
                 </ul>
             </nav>

@@ -29,7 +29,7 @@ export default async function AdminProfile( { userId } ) {
 
                     <div className='flex justify-between'>
                     <Link className='bg-[#F1C40E] text-black px-6 py-3 rounded-full text-xs font-bold uppercase leading-5 items-center'
-                        href={`/profile/${workoutClass.id}`}>
+                        href={`/my-profile/${workoutClass.id}`}>
                         Participants
                     </Link>
                     <div className='flex gap-2'>

@@ -15,8 +15,8 @@ export default async function ParticipantsList( {params} ) {
             <ProfileHeader />
 
             <section className="p-6">
-                <h1 className="text-xl font-[500] mb-2">{workout.className}</h1>
-                <h2 className="text-md mt-4 font-semibold mb-4">Participants:</h2>
+                <h2 className="text-xl font-[600] mb-2">{workout.className}</h2>
+                <h3 className="text-md mt-4 font-semibold mb-4">Participants:</h3>
                 <ul>
                     {workout.users.map((user) => (
                         <li className="border-solid outline rounded-full border-inherit flex justify-between px-5 py-3 mb-4"

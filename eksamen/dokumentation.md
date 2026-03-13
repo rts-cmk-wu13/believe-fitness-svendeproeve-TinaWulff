@@ -41,13 +41,18 @@ Dataen jeg henter fra API’et er i **JSON-format**, som er et letvægtsformat t
 
 Jeg har ikke brugt Typescript, fordi det ville gøre projektet mere komplekst og tungt at arbejde med alene, og det er unødvendigt i dette mindre projekt, hvor jeg arbejder alene. Derfor ikke behov for det ekstra lag af sikkerhed i udviklingen. Typescript giver mest mening, hvis man er flere om et større projekt, hvor det hjælper til at undgå fejl og gøre koden mere overskuelig for alle og undgå fejl i udviklignen. Her er hele koden min, og jeg har overblikket selv, hvilket bevares bedst uden brug af Typescript, som desuden ikke var en del af vores undervisning.
 
-- **Andet**:
-
-Alle mine dependencies styres via package.json, hvor jeg blandt andet har installeret **React, Next.js, Tailwind, react-icons og zod.** Tailwind er for at kunne lave min Tailwind styling og react-icons hjælper mig så jeg nemt kan importere ikoner til brug i projectet uden at uploade ikonerne som billed-filer i assets.
-jeg har også instaalleret **Embla Carousel** for at lave moderne slider. Jeg har desuden til dette søgt hjælp her, pga min react version ikke understøttede nyeste goToNext function. 
+- **Refferencer, deppendencies ETC**:
+Alle mine dependencies styres via package.json, hvor jeg blandt andet har installeret **React, Next.js, Tailwind, react-icons og zod.**
+Tailwind er for at kunne lave min Tailwind styling og react-icons hjælper mig så jeg nemt kan importere ikoner til brug i projectet uden at uploade ikonerne som billed-filer i assets.
+jeg har også instaalleret **Embla Carousel** og **Embla Carousel autoplay** for at lave moderne slider. Jeg har desuden til dette søgt hjælp her, pga min react version ikke understøttede nyeste goToNext function. 
 scrollPrev/scrollNext, bruges i tidligere versioner som min er; 8.6, og hjælp til sammenligning af versioner fundet: https://github.com/davidjerleke/embla-carousel/discussions/1080 .
 
 Jeg kunne ikke helt huske hvordan man bruger Math.random, så jeg søgte hjælp online ved at google og fandt et godt eksempel, der hjalp mig: https://stackoverflow.com/questions/3419928/how-can-i-return-a-random-value-from-an-array 
+
+Burgermenu med react, jeg hjælp til at komme i gang, da jeg ville bruge useState hooket hertil - jeg fandt hjælp til at komme igang i beskrivelsen og eksemplet her:
+https://khuang159.medium.com/creating-a-hamburger-menu-in-react-f22e5ae442cb
+
+Derudover brugt hjælp fra diverse af mine tidligere kodeprojekter, og officielle dokumentations-sider.
 
 
 

@@ -1,8 +1,7 @@
 //API route (Next.js): /api/search er en "API route".
 // Til Fetch til API:
-// "Client-side fetch", "API request", "asynkron search", "server-side search".
-// FORDI: Det er mere effektivt og sikkert at søge på serveren,
-// især hvis du har mange data eller vil beskytte data.
+// "Client-side fetch", "API request", "server-side search".
+// FORDI: Det er mere effektivt og sikkert at søge på serveren.
 
 import { NextResponse } from 'next/server';
 import { getWorkoutClasses } from '../../lib/dal';
@@ -19,11 +18,6 @@ export async function GET(request) {
     if (!workoutClasses) {
       return Response.json({ succes: false, message: "No data found" }, { status: 404 });
     }
-  //const userDetails = await getUserDetails(); Virker ikke, kan kun hente 1 af gangen på id med token:
-  //tilføj evt flere datakilder via fx getUsersDetails, getActivityDetails(?) for at få nok data til søgningen,
-  // (Søgekrav er på på aktivitetstitel, ugedag og intruktørnavn.)
-
-  //   const users = await getUsers();
 
   // Filtrer data
   const ClassesResults = workoutClasses.filter(wc =>
