@@ -51,6 +51,9 @@ export async function CreateUser(prevState, formData) { // når vi laver en acti
   headers: { "Content-Type": "application/json" }
   });
   //console.log(await response.json())
+
+  
+
   if (!response.ok) {
   // hvis det ikke er ok, altså hvis der er en fejl, så returnerer vi den her state, som indeholder de værdier brugeren indtastede (så de ikke skal indtaste det hele igen) og en form-fejl.
   return { 

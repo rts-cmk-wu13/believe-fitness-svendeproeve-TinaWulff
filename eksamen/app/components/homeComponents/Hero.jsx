@@ -3,8 +3,6 @@
     import { useEffect, useState } from "react";
     import Link from "next/link";
     import Image from "next/image";
-    // import HeroImg from "../../assets/welcome.jpg";
-    //import splash2 from "../../assets/splash2.png"
 
     export default function HeroComp() {
     
@@ -59,30 +57,4 @@
         </div>
      </section>
     )
-
     }
-
-    //       <section className="relative flex flex-col justify-end pb-6 w-full max-w-full justify-end">
-    //     <div className="absolute inset-0 flex flex-col">
-    //       <h1 className="top-80 self-end z-100 absolute mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
-    //       <Image width={1499} height={1000} className="absolute aspect-4/3 inset-0 object-cover w-full" src="/assets/welcome.jpg" alt="Hero Image" />
-        
-    //       <div className="flex gap-2 px-6 items-end absolute">
-    //             <Link href="/login"
-    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
-    //             Classes
-    //           </Link>
-    //         {!loggedIn ? (
-    //           <Link href="/login"
-    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
-    //             Log ind
-    //           </Link>
-    //         ) : (
-    //           <Link href="/profil"
-    //             className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-10 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
-    //             Profile
-    //           </Link>
-    //         )}
-    //       </div>   
-    //     </div>
-    //  </section>

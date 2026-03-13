@@ -35,6 +35,15 @@ export async function CreateClass(prevState, formData) {
     asset: formData.get('asset') || null
   };
 
+  const sendData = new FormData();
+  sendData.append('className', values.className);
+  sendData.append('classDescription', values.classDescription);
+  sendData.append('classDay', values.classDay);
+  sendData.append('classTime', values.classTime);
+  sendData.append('trainerId', values.trainerId);
+  sendData.append('maxParticipants', values.maxParticipants);
+  if (values.asset) sendData.append('asset', values.asset);
+
   // Valider med Zod
   const result = createClassSchema.safeParse(values);
 
@@ -50,21 +59,24 @@ export async function CreateClass(prevState, formData) {
     // fieldErrors er en del af det objekt, som z.flattenError returnerer, det er her z.objektets fejlbesker ligger og vi her med .fieldErrors får adgang til dem, så vi kan sende dem tilbage til vores form og vise dem for brugeren.
 
 
-  const params = new URLSearchParams();
-  Object.entries(values).forEach(([key, value]) => {
-    params.append(key, value);
-  });
+  // const params = new URLSearchParams();
+  // Object.entries(values).forEach(([key, value]) => {
+  //   params.append(key, value);
+  // });
 
   const response = await fetch("http://localhost:4000/api/v1/classes", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json"
+      // "Content-Type": "application/json"
     },
-    body: formData
+    body: sendData
   });
 
   if (!response.ok) {
+    // const errorText = await response.text();
+    // console.log('Backend status:', response.status);
+    // console.log('Backend res:', errorText);
     return {
       values,
       errors: { form: ["Noget gik galt, prøv igen senere"] },
@@ -80,7 +92,8 @@ export async function CreateClass(prevState, formData) {
         classDay: '',
         classTime: '',
         trainerId: '',
-        maxParticipants: ''
+        maxParticipants: '',
+        asset: null 
     },
     errors: undefined,
     success: "Hold oprettet!"

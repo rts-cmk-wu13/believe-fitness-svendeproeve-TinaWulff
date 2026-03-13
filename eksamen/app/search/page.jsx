@@ -1,7 +1,6 @@
 
 import { getWorkoutClasses } from '../lib/dal';
 import { getTrainers } from '../lib/dal';
-import Link from 'next/link';
 import WorkoutCard from '../components/WorkoutCard';
 import Image from 'next/image';
 import Search from '../components/search/Search';

@@ -10,7 +10,7 @@ export async function getNews() {
 }
 
 export async function getWorkoutClasses() {
-    const response = await fetch("http://localhost:4000/api/v1/classes", { next: { revalidate: 60*60*24 } });
+    const response = await fetch("http://localhost:4000/api/v1/classes");
     const data = await response.json();
 
     console.log(data);
