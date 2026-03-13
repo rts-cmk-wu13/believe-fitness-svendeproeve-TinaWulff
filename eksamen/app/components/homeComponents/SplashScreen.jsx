@@ -18,12 +18,14 @@
             const SplashAlreadyShown = sessionStorage.getItem('SplashAlreadyShown');
             if (!SplashAlreadyShown) {
                 setVisible(true);
+                document.body.style.overflow = 'hidden';
                 setTimeout(() => setShowButton(true), 700);
             }
         }, []);
 
         function handleStart() {
             sessionStorage.setItem('SplashAlreadyShown', 'true');
+            document.body.style.overflow = '';
             setVisible(false);
         }
 

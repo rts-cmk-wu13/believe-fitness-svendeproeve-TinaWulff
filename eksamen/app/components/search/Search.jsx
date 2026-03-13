@@ -33,7 +33,7 @@ export default function Search() {
 
 
   return (
-    <div ref={ref} className="w-full flex flex-col p-6 mt-10 text-black">
+    <article ref={ref} className="w-full flex flex-col p-6 mt-10 text-black">
       <form className='flex w-full justify-start'
         onSubmit={handleSearch}>
         <input className="border-solid bg-white outline rounded-full border-inherit w-full text-s text-gray-400 p-2 pl-10 text-lg"
@@ -72,7 +72,7 @@ export default function Search() {
           );
         })()
       )}
-    </div>
+    </article>
   );
 }
 

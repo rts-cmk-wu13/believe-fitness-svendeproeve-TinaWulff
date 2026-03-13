@@ -4,6 +4,7 @@
     import Link from "next/link";
     import Image from "next/image";
 
+
     export default function HeroComp() {
     
     // Tjek for om der er en accessToken-cookie, og om den er gyldig (ikke udløbet)
@@ -38,7 +39,7 @@
           <h1 className="z-11 mx-6 text-[#F1C40E] font-bold text-5xl mb-6">Welcome to Belive Fitness</h1>
           <div className="flex gap-2 px-6 items-end">
             
-                <Link href="/popular-classes"
+                <Link href="/classes"
                 className="flex bg-[#F1C40E] font-bold uppercase text-sm items-center p-4 rounded-full z-11 h-[53px] max-w-[300px] px-8 self-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] leading-none relative align-end">
                 Classes
               </Link>

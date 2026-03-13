@@ -1,8 +1,11 @@
+'use client'
+
 import { FaCircle } from "react-icons/fa";
+import { usePathname } from 'next/navigation'
 
-
-export default async function Footer() {
-
+export default function Footer() {
+  const pathname = usePathname()
+  if (pathname !== '/') return null
 
     return (
             <footer className="flex flex-col items-center my-8">

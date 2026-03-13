@@ -15,14 +15,6 @@ return(
              <h2 className="font-bold">
             {workout.className}
             </h2>
-
-             <div className="flex gap-1">
-              <GoStarFill  size={16} className="w-[1em]" />
-              <GoStarFill  size={16} className="w-[1em]"/>
-              <GoStarFill  size={16} className="w-[1em]"/>
-              <GoStarFill  size={16} className="w-[1em]"/>
-              <GoStarFill  size={16} className="w-[1em]"/>
-            </div>
           </div>
         </article>
 </Link>

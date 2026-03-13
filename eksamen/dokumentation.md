@@ -3,12 +3,31 @@ Tina Wulff, WU13
 
 **Valgfri opgave B: Registrering af ny bruger**
 
-
 ### Egne Valg:
 Jeg har gjort mig enkelte egne valg i forbindelse med udviklingen og tilpasning i designet: **Ændret i side-navne for simplicitet og nem inhentning af pathname på sidetitel**.
 Jeg har forbedre brugervenligheden en smule for at være mere konsekvent i design og overholdelse af design-konventioner - sørge for at der er "tilbage"-knap på alle sider pånær home og sørge for sidetitel altid er synlig på siden.
 Jeg har desuden tilføjet enkelt ekstra ux vha modal eller dialog bokse, som ikke er direkte beskrevet i designet, fx i forbindelse med oprettelse af bruger og afmelding af hold.
 Jeg har tilføjet en ekstra "log out"-button da det konventionelt giver mening at kunne logge ud fra sin profilside. 
+
+**API ÆNDRING**: Jeg har tilføjet to linier i API'et til creaSingleUser, nemlig for at tilføje userFirstname og userLastName og kunne hente navnene ind igen i profilsiden:
+
+```javascript
+async function createSingleUser(req, res, next) {
+	try {
+		let user = await User.create({
+			userFirstName: req.fields.userFirstName, // denne linie tilføjet
+			userLastName: req.fields.userLastName, // denne linie tilføjet
+			username: req.fields.username,
+			password: hashSync(req.fields.password, 15),
+			role: "default"
+		});
+		res.json(user);
+	} catch (error) {
+		console.error(error);
+		res.status(500).end();
+	}
+}
+```
 
 ### Tech stack
 
