@@ -7,10 +7,12 @@ import Slider from "./components/homeComponents/slider/slider";
 import ContactForm from "./components/homeComponents/ContactForm";
 import Divider from "./components/homeComponents/Divider";
 import Footer from "./components/homeComponents/Footer";
+import SplashComp from "./components/homeComponents/SplashScreen";
 
  export default function Home() {
    return (
     <>
+      <SplashComp />
       <section>
         <HeroComp />
         

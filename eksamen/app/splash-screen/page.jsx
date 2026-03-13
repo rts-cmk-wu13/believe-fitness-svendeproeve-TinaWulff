@@ -1,12 +1,15 @@
-import { getAllAssets } from "../lib/dal"
 
-export default async function Slider() {
 
-const assets = await getAllAssets()
-console.log("assets:", assets)
+import SplashComp from "../components/homeComponents/SplashScreen"
+
+export default function SplashScreen() {
+
+
 
 return (
-null
+    <>
+        <SplashComp />
+    </>
 )
 
 }
